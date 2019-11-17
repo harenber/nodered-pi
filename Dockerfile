@@ -1,9 +1,12 @@
-ARG NODE_VERSION=6
-FROM hypriot/rpi-node:${NODE_VERSION}
+ARG NODE_VERSION=lts
+FROM node:${NODE_VERSION}
 
 # add support for gpio library
 RUN apt-get update
-RUN apt-get install python-rpi.gpio tcl
+# Unfortunately, the "node" container is not based on Raspbian, so no
+# GPIO support at the moment :-( 
+#RUN apt-get install python-rpi.gpio tcl
+RUN apt-get -y install tcl
 
 # Home directory for Node-RED application source code.
 RUN mkdir -p /usr/src/node-red
@@ -16,7 +19,8 @@ WORKDIR /usr/src/node-red
 # Add node-red user so we aren't running as root.
 RUN useradd --home-dir /usr/src/node-red --no-create-home node-red \
     && chown -R node-red:node-red /data \
-    && chown -R node-red:node-red /usr/src/node-red
+    && chown -R node-red:node-red /usr/src/node-red \
+    && mkdir -p /usr/local/bin/
 
 USER node-red
 

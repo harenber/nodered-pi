@@ -1,7 +1,7 @@
 {
     "name": "node-red-docker",
-    "version": "1.0.0",
-    "description": "A visual tool for wiring the Internet of Things",
+    "version": "1.0.2",
+    "description": "Low-code programming for event-driven applications",
     "homepage": "http://nodered.org",
     "license": "Apache-2.0",
     "repository": {
@@ -10,7 +10,7 @@
     },
     "main": "node_modules/node-red/red/red.js",
     "scripts": {
-        "start": "node $NODE_OPTIONS node_modules/node-red/red.js -v $FLOWS"
+        "start": "node $NODE_OPTIONS node_modules/node-red/red.js $FLOWS"
     },
     "contributors": [
         {
@@ -21,16 +21,15 @@
         },
         {
             "name": "James Thomas"
+        },
+        {
+            "name": "Raymond Mouthaan"
         }
     ],
     "dependencies": {
-        "node-red": "0.19.5",
-        "node-red-node-msgpack": "*",
-        "node-red-node-base64": "*",
-        "node-red-node-suncalc": "*",
-        "node-red-node-random": "*"
+        "node-red": "1.0.2"
     },
     "engines": {
-        "node": "4.*.*"
+        "node": ">=10"
     }
 }
