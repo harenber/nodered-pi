@@ -186,3 +186,5 @@ Example to read out some values of a Grünbeck device on a click (change the IP 
     }
 ]
 ```
+
+![Example NodeRED Output](https://raw.githubusercontent.com/harenber/nodered-pi/master/Gruenwelt_example.png)
