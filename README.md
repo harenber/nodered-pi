@@ -3,7 +3,7 @@ Dockerfile (and additional files) for a Node RED image on the Pi with tcl and a 
 
 - Dockerfile is derived from the original Dockerfile provided by the Node RED people (but heavily changed)
 - Base image is Raspbian to provide GPIO support. The node Docker image is based on vanilla Debian and has no Python GPIO package available.
-- Grünwelt script was found in a forum, the link inside the script for the original source
+- Grünwelt script was found in a forum, see the link inside the script for the original source
 
 Example to read out some values of a Grünbeck device on a click (change the IP to the one of your softener!):
 
