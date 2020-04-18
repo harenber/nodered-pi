@@ -1,10 +1,10 @@
 # nodered-pi
-Dockerfile (and additional files) for a Node RED image for x86 CPUs with tcl and a script to read out Grünwelt water softener
+Dockerfile (and additional files) for a Node RED image mainly for AMD
+boards (like Raspberry Pis) but also for x86 CPUs with tcl and a script to read out Grünwelt water softener
 
-- This is the x86 version on the "nodered-pi" image developed for ARM
-  boards like Raspberry Pis.
 - Dockerfile is derived from the original Dockerfile provided by the Node RED people (but heavily changed)
-- Base image is Debian stretch.
+- (x86) Base image is Debian stretch.
+- (arm) Base image is Raspbian to provide GPIO support. The node Docker image is based on vanilla Debian and has no Python GPIO package available.
 - Grünwelt script was found in a forum, see the link inside the script for the original source
 
 Example to read out some values of a Grünbeck device on a click (change the IP to the one of your softener!):
@@ -190,3 +190,32 @@ Example to read out some values of a Grünbeck device on a click (change the IP 
 ```
 
 ![Example NodeRED Output](https://raw.githubusercontent.com/harenber/nodered-pi/master/Gruenwelt_example.png)
+
+
+Example docker-compose.yml
+
+```yaml
+version: '3.7'
+
+services:
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    volumes:
+      - /mosquitto/data:/mosquitto/data
+      - /mosquitto/log:/mosquitto/log
+    restart: always
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+
+  nodered:
+    image: rpinodered-gruenbeck:latest
+    restart: always
+    depends_on:
+      - mosquitto
+    ports:
+      - "1880:1880"
+      - "8443:8443"
+    volumes:
+    - /home/harenber/data:/data
+```
