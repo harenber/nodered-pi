@@ -1,8 +1,10 @@
 # nodered-pi
-Dockerfile (and additional files) for a Node RED image on the Pi with tcl and a script to read out Grünwelt water softener
+Dockerfile (and additional files) for a Node RED image for x86 CPUs with tcl and a script to read out Grünwelt water softener
 
+- This is the x86 version on the "nodered-pi" image developed for ARM
+  boards like Raspberry Pis.
 - Dockerfile is derived from the original Dockerfile provided by the Node RED people (but heavily changed)
-- Base image is Raspbian to provide GPIO support. The node Docker image is based on vanilla Debian and has no Python GPIO package available.
+- Base image is Debian stretch.
 - Grünwelt script was found in a forum, see the link inside the script for the original source
 
 Example to read out some values of a Grünbeck device on a click (change the IP to the one of your softener!):

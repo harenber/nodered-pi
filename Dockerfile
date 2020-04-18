@@ -1,10 +1,8 @@
-FROM raspbian/stretch:latest
+FROM debian:stretch
 
 # add support for gpio library
 RUN apt-get update && apt-get -y upgrade
-# Unfortunately, the "node" container is not based on Raspbian, so no
-# GPIO support at the moment :-( 
-RUN apt-get install -y python-rpi.gpio tcl nodejs npm curl
+RUN apt-get install -y tcl curl && curl -sL https://deb.nodesource.com/setup_10.x | bash - && apt-get install -y nodejs
 
 # Home directory for Node-RED application source code.
 RUN mkdir -p /usr/src/node-red
