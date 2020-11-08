@@ -1,4 +1,4 @@
-FROM raspbian/stretch:latest
+FROM yummygooey/raspbian-buster
 
 # add support for gpio library
 RUN apt-get update && apt-get -y upgrade
