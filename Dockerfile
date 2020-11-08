@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM debian:buster
 
 # add support for gpio library
 RUN apt-get update && apt-get -y upgrade
