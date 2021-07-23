@@ -1,10 +1,11 @@
-FROM yummygooey/raspbian-buster
+#FROM yummygooey/raspbian-buster
+FROM navikey/raspbian-buster
 
-# add support for gpio library
+
 RUN apt-get update && apt-get -y upgrade
-# Unfortunately, the "node" container is not based on Raspbian, so no
-# GPIO support at the moment :-( 
-RUN apt-get install -y python-rpi.gpio tcl nodejs npm curl
+RUN apt-get install -y python-rpi.gpio tcl curl
+RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+RUN apt-get update && apt-get install -y nodejs
 
 # Home directory for Node-RED application source code.
 RUN mkdir -p /usr/src/node-red
