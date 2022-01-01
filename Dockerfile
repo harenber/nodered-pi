@@ -2,7 +2,7 @@ FROM debian:buster
 
 # add support for gpio library
 RUN apt-get update && apt-get -y upgrade
-RUN apt-get install -y tcl curl && curl -sL https://deb.nodesource.com/setup_16.x | bash - && apt-get install -y nodejs
+RUN apt-get install -y tcl curl && curl -sL https://deb.nodesource.com/setup_16.x | bash - && apt-get install -y nodejs python python3
 
 # Home directory for Node-RED application source code.
 RUN mkdir -p /usr/src/node-red
